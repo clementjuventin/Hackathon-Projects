@@ -1,0 +1,20 @@
+.simulationDataGrid>* {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+.apexcharts-canvas {
+    background-color: white;
+}
+
+.balanceDiff {
+    text-align: center;
+    margin: auto;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.formContainer>* {
+    margin: 0.7rem 0;
+}

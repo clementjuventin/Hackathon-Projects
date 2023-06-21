@@ -1,0 +1,43 @@
+specVersion: 0.0.5
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Sel
+    network: sepolia
+    source:
+      address: "0x9F8865559f2b22F3883e162bEbe80F6069Dd9Dc9"
+      abi: Sel
+      startBlock: 3658032
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - OfferCanceled
+        - OfferCreated
+        - PropositionAccepted
+        - PropositionCanceled
+        - PropositionMade
+        - Offer
+        - Transfer
+      abis:
+        - name: Sel
+          file: Sel/abis/Sel.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: OfferCanceled(uint256,address)
+          handler: handleOfferCanceled
+        - event: OfferCreated(uint256,address,uint256,bytes32[2])
+          handler: handleOfferCreated
+        - event: PropositionAccepted(uint256,address,address,uint256,bytes32[2])
+          handler: handlePropositionAccepted
+        - event: PropositionCanceled(uint256,address)
+          handler: handlePropositionCanceled
+        - event: PropositionMade(uint256,address,uint256,bytes32[2])
+          handler: handlePropositionMade
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: Sel/Sel.wasm
